@@ -1,0 +1,21 @@
+name: "threeGames"
+mode: "dev"
+port: 8000
+startTime: "2021-10-01"
+machineID: 1
+
+log:
+    level: "debug"
+    filename: "threeGames.log"
+    max_size: 20
+    max_age: 30
+    max_backups: 3
+
+mysql:
+    host: "127.0.0.1"
+    port: 3306
+    user: "root"
+    password: "XGY3268154595xx."
+    dbname: "210925threeGames"
+    max_open_connections: 50
+    max_idle_connections: 20
