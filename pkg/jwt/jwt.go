@@ -17,13 +17,13 @@ type MyClaims struct {
 }
 
 // GenToken 生成access token
-func GenToken(userID int64, username string) (string, error) {
+func GenToken(userID int64, username string, duration time.Duration) (string, error) {
 	// 创建一个自己声明的数据
 	c := MyClaims{
 		UserID:   userID,
 		Username: username,
 		StandardClaims: jwt.StandardClaims{
-			ExpiresAt: time.Now().Add(TokenExpireDuration).Unix(), // 过期时间
+			ExpiresAt: time.Now().Add(duration).Unix(), // 过期时间
 			Issuer:    "bluebell", // 签发人
 		},
 	}

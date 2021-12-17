@@ -11,6 +11,7 @@ const (
 	CodeNotLogin      ResCode = 401
 	CodeForbidden     ResCode = 403
 	CodeNotFound      ResCode = 404
+	CodeInvalidParams ResCode = 412
 	CodeActiveFailed  ResCode = 430
 	CodeRefreshFailed ResCode = 431
 	CodeServerBusy    ResCode = 500
@@ -22,6 +23,7 @@ var CodeMsgMap = map[ResCode]string{
 	CodeNotLogin:      "未登录",
 	CodeForbidden:     "权限不够",
 	CodeNotFound:      "这里空空如也",
+	CodeInvalidParams: "请求参数有误",
 	CodeActiveFailed:  "active token失效了",
 	CodeRefreshFailed: "refresh token失效了",
 	CodeServerBusy:    "服务繁忙",
@@ -57,7 +59,7 @@ func ResponseError(c *gin.Context, code ResCode)  {
 		Msg:  code.Msg(),
 		Data: nil,
 	}
-	c.JSON(int(code), rd)
+	c.JSON(int(CodeSuccess), rd)
 }
 
 func ResponseErrorWithMsg(c *gin.Context, code ResCode, msg interface{})  {
@@ -66,5 +68,5 @@ func ResponseErrorWithMsg(c *gin.Context, code ResCode, msg interface{})  {
 		Msg:  msg,
 		Data: nil,
 	}
-	c.JSON(int(code), rd)
+	c.JSON(int(CodeSuccess), rd)
 }
