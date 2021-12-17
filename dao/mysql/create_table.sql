@@ -27,13 +27,13 @@ create table `community` (
     `id` bigint(20) not null auto_increment,
     `page_id` bigint(20) not null ,
     `user_id` bigint(20) not null ,
-    `views` int not null,
+    `views` int not null default 0,
     `title` varchar(32) collate utf8mb4_general_ci not null ,
-    `preContent` varchar(210) collate utf8mb4_general_ci not null ,
+    `pre_content` varchar(210) collate utf8mb4_general_ci not null ,
     `content` varchar(5000) collate utf8mb4_general_ci not null ,
     `approve` varchar(8000) collate utf8mb4_general_ci default '',
     `create_time` bigint(20) not null comment '创建时间',
-    `update_time` bigint(20) comment '更新时间',
+    `update_time` bigint(20) default 0 comment '更新时间',
     primary key (`id`)
 ) engine = InnoDB default charset = utf8mb4 collate = utf8mb4_general_ci;
 
